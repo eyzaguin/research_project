@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Nicole Eyzaguirre's research question and project proposal for Applied Data Visualization.">
+	<title>Assignment 01 | Research Proposal</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="topline"></div>
+	<header class="site-header">
+		<a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a>
+		<a class="back-link" href="index.html#project">Back to project architecture</a>
+	</header>
+
+	<main class="assignment-detail section-shell proposal-page">
+		<a class="back-link" href="index.html#project">← All assignments</a>
+		<section class="assignment-hero reveal visible">
+			<div class="assignment-kicker"><span>A01</span><span>12-assignment project guide</span></div>
+			<h1>Research question<br><em>&amp; project proposal</em></h1>
+			<p class="assignment-summary">Exploring the relationship between musical characteristics and song popularity on Spotify.</p>
+		</section>
+
+		<section class="proposal-intro">
+			<div><p class="eyebrow">Research topic</p><h2>What makes a song<br><em>popular?</em></h2></div>
+			<div class="assignment-copy"><p>This project investigates whether measurable audio characteristics are associated with how popular a song becomes on Spotify. It focuses on patterns in the music itself while recognizing that popularity is also shaped by artists, marketing, trends, and exposure.</p><div class="detail-rule"></div><p class="detail-label">Nicole Eyzaguirre<br>TECH*3745*01 · Professor Xiwang Guo</p></div>
+		</section>
+
+		<section class="proposal-section">
+			<div class="proposal-label"><span>01</span><p class="eyebrow">Dataset</p></div>
+			<div class="proposal-body"><h2>Spotify Tracks Dataset<br><em>| Audio Features</em></h2><p>I selected the <a class="inline-link" href="https://www.kaggle.com/datasets/saichaitanyareddyai/spotify-tracks-dataset-audio-features" target="_blank" rel="noreferrer">Spotify Tracks Dataset | Audio Features on Kaggle</a>. It contains approximately 114,000 songs across 114 music genres, including Spotify popularity scores and audio features such as danceability, energy, tempo, duration, valence, loudness, acousticness, and speechiness.</p></div>
+		</section>
+
+		<section class="proposal-section">
+			<div class="proposal-label"><span>02</span><p class="eyebrow">Problem &amp; purpose</p></div>
+			<div class="proposal-body"><h2>Popularity varies.<br><em>The reasons are complex.</em></h2><p>Thousands of songs are available through streaming platforms, but they receive very different levels of attention. This project asks whether the actual musical characteristics of songs can help explain those differences.</p><p>Understanding these relationships could provide insight for artists, producers, record labels, streaming platforms, and researchers interested in music analytics. The results will describe associations, not prove that any single characteristic causes popularity.</p></div>
+		</section>
+
+		<section class="question-panel">
+			<p class="eyebrow">Primary research question</p>
+			<blockquote>What musical characteristics are associated with higher song popularity on Spotify?</blockquote>
+			<div class="subquestions"><p class="eyebrow">Sub-questions</p><ol><li>Is danceability associated with higher song popularity?</li><li>Is a song's energy level related to its popularity?</li><li>Does popularity differ across music genres?</li><li>Is song tempo related to popularity?</li><li>Is song duration associated with popularity?</li></ol></div>
+		</section>
+
+		<section class="proposal-section methodology-section">
+			<div class="proposal-label"><span>03</span><p class="eyebrow">Methodology</p></div>
+			<div class="proposal-body"><h2>A measured path from<br><em>dataset to evidence.</em></h2><p>The analysis will use a reproducible, quantitative workflow to examine relationships in the selected Kaggle dataset.</p><div class="method-steps"><article><span>01</span><h3>Prepare the data</h3><p>Inspect the schema, remove duplicate tracks where appropriate, assess missing values, check variable types, and document all cleaning decisions.</p></article><article><span>02</span><h3>Describe the sample</h3><p>Summarize popularity and audio features with counts, ranges, means, medians, and distributions. Examine genre balance before comparing groups.</p></article><article><span>03</span><h3>Compare relationships</h3><p>Use scatterplots and correlation measures to examine popularity with danceability, energy, tempo, duration, and other continuous features.</p></article><article><span>04</span><h3>Compare genres</h3><p>Use grouped summaries and visual comparisons to evaluate how average popularity and audio profiles vary across track genres.</p></article><article><span>05</span><h3>Model and test</h3><p>Use a multiple regression model, with popularity as the outcome, to estimate the association of selected audio features while accounting for genre where possible.</p></article><article><span>06</span><h3>Check uncertainty</h3><p>Report effect sizes, confidence intervals, and practical limitations alongside statistical significance. Check whether outliers or uneven genre sizes change the interpretation.</p></article></div></div>
+		</section>
+
+		<section class="proposal-section variables-section">
+			<div class="proposal-label"><span>04</span><p class="eyebrow">Variables &amp; hypotheses</p></div>
+			<div class="proposal-body"><h2>What will be<br><em>measured?</em></h2><div class="variable-grid"><div><span class="variable-tag">Dependent variable</span><p><code>popularity</code>, a Spotify score from 0 to 100.</p></div><div><span class="variable-tag">Independent variables</span><p><code>danceability</code>, <code>energy</code>, <code>tempo</code>, <code>duration_ms</code>, and <code>track_genre</code>.</p></div><div><span class="variable-tag">Additional variables</span><p><code>valence</code>, <code>loudness</code>, <code>acousticness</code>, <code>speechiness</code>, <code>explicit</code>, and <code>instrumentalness</code>.</p></div></div><div class="hypotheses"><p class="eyebrow">Preliminary hypotheses</p><p><strong>H1</strong> Songs with higher danceability scores will tend to have higher popularity scores.</p><p><strong>H2</strong> Average song popularity will differ across music genres.</p><p><strong>H3</strong> Songs with higher energy levels will tend to have higher popularity scores.</p></div></div>
+		</section>
+
+		<section class="limitations"><p class="eyebrow">Scope note</p><h2>Association is not<br><em>causation.</em></h2><p>Spotify popularity may also reflect marketing, artist recognition, social media trends, playlist placement, release timing, and other factors not included in this dataset. The final analysis will treat these results as evidence of relationships within the sample, not a formula for making a song popular.</p></section>
+
+		<nav class="assignment-pager"><span></span><a href="assignment-02.html">Next assignment →</a></nav>
+	</main>
+
+	<footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+</body>
+</html>
