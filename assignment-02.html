@@ -23,6 +23,7 @@
       <div><p class="eyebrow">Assignment brief</p><h2>Know the evidence before you use it.</h2></div>
       <div class="assignment-copy"><p>Investigate the Kaggle dataset’s origin, fields, format, and documentation. Record what the data can support, where it is incomplete, and which assumptions will shape the project.</p><div class="detail-rule"></div><p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p></div>
     </section>
+   
     <section class="proposal-visuals">
       <div class="visuals-heading"><p class="eyebrow">Preliminary visual evidence</p><h2>First looks at<br><em>the dataset.</em></h2></div>
       <div class="figure-grid">
@@ -31,9 +32,23 @@
         <figure class="data-figure"><img src="graph_4.png" alt="Grouped bar chart comparing counts of Hit and Flop songs across the edm, latin, pop, r&amp;b, rap, and rock genres"><figcaption><span>Figure 04</span><strong>Hit and Flop songs by genre</strong><small>Found the Kaggle dataset that this graph appears to be based on: The Spotify Hit Predictor Dataset (1960–2019). It contains 40,000+ tracks labeled as either Hit (1) or Flop (0), with tracks separated by decade.</small></figcaption></figure>
         <figure class="data-figure data-figure-wide data-figure-final"><img src="graph_3.JPG" alt="Dataset profile showing track variables including duration, explicit status, year, danceability, energy, key, loudness, and mode from years 2000-2019"><figcaption><span>Figure 01</span><strong>Dataset profile</strong><small>From years 2000-2019</small></figcaption></figure>
       </div>
+    </section> <section class="music-lab" aria-labelledby="music-lab-title">
+      <div class="music-lab-heading"><p class="eyebrow">Browser-only prototype</p><h2 id="music-lab-title">Music <em>insight</em> lab.</h2><p>Enter a song profile and ask the local analysis assistant for an estimated popularity reading. Nothing is uploaded or sent to a server.</p></div>
+      <div class="music-lab-grid">
+        <form class="music-form" id="music-form">
+          <label>Song title<input id="song-title" type="text" placeholder="e.g. Midnight Drive"></label>
+          <div class="form-two"><label>Genre<select id="song-genre"><option>Pop</option><option>Rock</option><option>Rap</option><option>R&amp;B</option><option>Latin</option><option>EDM</option><option>Jazz</option><option>Other</option></select></label><label>Tempo<input id="song-tempo" type="number" min="40" max="240" value="120"><span class="input-unit">BPM</span></label></div>
+          <div class="form-two"><label>Danceability<input id="song-danceability" type="range" min="0" max="1" step="0.01" value="0.70"><output for="song-danceability">0.70</output></label><label>Energy<input id="song-energy" type="range" min="0" max="1" step="0.01" value="0.65"><output for="song-energy">0.65</output></label></div>
+          <div class="form-two"><label>Duration<input id="song-duration" type="number" min="30" max="900" value="210"><span class="input-unit">seconds</span></label><label class="check-label"><input id="song-explicit" type="checkbox"> Explicit lyrics</label></div>
+          <button type="submit" class="analyze-button">Analyze song <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="chat-result" aria-live="polite"><div class="chat-topline"><span class="status-dot"></span><span>Local analysis assistant</span><span class="chat-note">No backend</span></div><div id="chat-output"><p class="chat-message">Tell me about a song using the profile on the left. I’ll return an estimated popularity score and a short reading of its characteristics.</p></div></div>
+      </div>
+      <p class="lab-disclaimer">Research note: this is an exploratory browser prototype. The popularity score is a transparent estimate based on the entered features, not a causal prediction or official Spotify score.</p>
     </section>
     <nav class="assignment-pager"><a href="assignment-01.html">← Previous</a><a href="assignment-03.html">Next assignment →</a></nav>
   </main>
   <footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+  <script src="assignment-02.js"></script>
 </body>
 </html>
