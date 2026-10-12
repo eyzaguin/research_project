@@ -1,0 +1,63 @@
+{
+  "target": "Spotify popularity score (0–100)",
+  "task": "Regression",
+  "sourceRows": 113550,
+  "usableRows": 113550,
+  "predictors": [
+    "danceability",
+    "energy",
+    "tempo",
+    "duration_min",
+    "valence",
+    "acousticness",
+    "speechiness",
+    "instrumentalness",
+    "liveness",
+    "loudness",
+    "key",
+    "mode",
+    "time_signature",
+    "explicit"
+  ],
+  "categoricalGenreIncluded": false,
+  "genreNote": "A genre-only baseline is included; genre is not one-hot encoded in the audio-feature models.",
+  "split": {
+    "method": "Deterministic 80/20 split grouped by track_id using FNV-1a hash modulo 5; identical track IDs stay in one partition.",
+    "trainingRows": 90852,
+    "testRows": 22698,
+    "seed": "FNV-1a(track_id) % 5 == 0 assigns test rows"
+  },
+  "accuracyNote": "Accuracy is a classification metric and does not apply to this numeric regression task. Report test MAE, RMSE, and R² instead.",
+  "models": [
+    {
+      "model": "Training-mean baseline",
+      "description": "Predicts the training-set mean popularity for every track.",
+      "testMAE": 18.869108853492946,
+      "testRMSE": 22.26589025607442,
+      "testR2": 0
+    },
+    {
+      "model": "Genre-mean baseline",
+      "description": "Predicts the training mean for the track's genre label.",
+      "testMAE": 14.107973922269425,
+      "testRMSE": 19.267168785487193,
+      "testR2": 0.2512175178466476
+    },
+    {
+      "model": "Multiple linear regression",
+      "description": "OLS with standardized numeric audio features and explicit-status indicator; fitted on training rows only.",
+      "testMAE": 18.37516092438127,
+      "testRMSE": 21.984097881507022,
+      "testR2": 0.025151405953021788
+    },
+    {
+      "model": "Decision-tree regression",
+      "description": "CART regression tree on the same numeric audio features; max depth 5, minimum leaf 100, 57 total nodes.",
+      "testMAE": 18.089097773175954,
+      "testRMSE": 21.77644019116972,
+      "testR2": 0.04348090283094541
+    }
+  ],
+  "winnerByRMSE": "Genre-mean baseline",
+  "interpretationNote": "All scores are test-set prediction metrics, not causal estimates. The genre mean baseline uses the track_genre label; the audio-feature models use numeric features only."
+}

@@ -117,6 +117,72 @@
       </ol>
     </section>
 
+    <section class="model-comparison" aria-labelledby="model-comparison-title">
+      <div class="model-heading">
+        <p class="eyebrow">Exploratory prediction · prepared dataset</p>
+        <h2 id="model-comparison-title">Popularity model comparison.</h2>
+        <p>The proposal treats Spotify popularity as a numeric outcome, so this is a regression task. The prepared 113,550-row dataset was split 80/20 by <code>track_id</code> so rows for the same track stay in one partition. All scores below are measured on the held-out test set.</p>
+      </div>
+      <p class="model-metric-note"><strong>Accuracy is not applicable:</strong> accuracy is for classification labels. For a numeric popularity score, compare mean absolute error (MAE), root mean squared error (RMSE), and R². Lower MAE/RMSE and higher R² indicate better test-set predictions.</p>
+      <div class="model-table-wrap">
+        <table class="model-table">
+          <caption>Held-out test results · popularity score (0–100)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col">Predictors / setup</th>
+              <th scope="col">MAE ↓</th>
+              <th scope="col">RMSE ↓</th>
+              <th scope="col">R² ↑</th>
+              <th scope="col">Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Training-mean baseline</th>
+              <td>One training-set mean for every test track</td>
+              <td>18.8691</td>
+              <td>22.2659</td>
+              <td>0.0000</td>
+              <td>N/A · regression</td>
+            </tr>
+            <tr>
+              <th scope="row">Genre-mean baseline</th>
+              <td>Training popularity mean for each <code>track_genre</code></td>
+              <td>14.1080</td>
+              <td>19.2672</td>
+              <td>0.2512</td>
+              <td>N/A · regression</td>
+            </tr>
+            <tr>
+              <th scope="row">Multiple linear regression</th>
+              <td>14 standardized numeric audio features plus <code>explicit</code></td>
+              <td>18.3752</td>
+              <td>21.9841</td>
+              <td>0.0252</td>
+              <td>N/A · regression</td>
+            </tr>
+            <tr>
+              <th scope="row">Decision-tree regression</th>
+              <td>Same audio features; depth 5, minimum 100 tracks per leaf</td>
+              <td>18.0891</td>
+              <td>21.7764</td>
+              <td>0.0435</td>
+              <td>N/A · regression</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="model-interpretation">
+        <p><strong>Result:</strong> The genre-mean baseline performs best (RMSE 19.2672; R² 0.2512). The audio-feature decision tree performs slightly better than linear regression, but its R² is only 0.0435. In this comparison, genre averages provide more predictive information than the tested audio features alone.</p>
+        <p><strong>Interpret carefully:</strong> These are predictive associations, not evidence that genre or any audio feature causes popularity. The genre baseline uses <code>track_genre</code>; the other two fitted models intentionally use audio features only. The split keeps the same track ID out of both training and test sets.</p>
+      </div>
+      <div class="prep-links model-links">
+        <a href="assignment-03-data/model-comparison.json">Model results JSON <span>Split details and metrics ↗</span></a>
+        <a href="assignment-03-models.js">View model training script <span>Reproducible comparison ↗</span></a>
+      </div>
+    </section>
+
     <section class="prep-deliverables">
       <p class="eyebrow">Prepared data &amp; reproducibility</p>
       <h2>Download the prepared dataset.</h2>
