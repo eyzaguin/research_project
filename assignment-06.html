@@ -1,1 +1,178 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Assignment 06 | Applied Data Visualization</title><link rel="stylesheet" href="styles.css"></head><body><div class="topline"></div><header class="site-header"><a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a><a class="back-link" href="index.html#project">Back to project architecture</a></header><main class="assignment-detail section-shell"><a class="back-link" href="index.html#project">← All assignments</a><section class="assignment-hero reveal visible"><div class="assignment-kicker"><span>A06</span><span>12-assignment project guide</span></div><h1>Static visualization</h1><p class="assignment-summary">Build precise, publication-quality visual stories.</p></section><section class="assignment-content"><div><p class="eyebrow">Assignment brief</p><h2>Give the evidence a visual grammar.</h2></div><div class="assignment-copy"><p>Select chart forms, encodings, color, and annotations that make the most important patterns easy to see. Build a static visualization that can stand on its own.</p><div class="detail-rule"></div><p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p></div></section><nav class="assignment-pager"><a href="assignment-05.html">← Previous</a><a href="assignment-07.html">Next assignment →</a></nav></main><footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Redesign five Spotify research findings as accessible, publication-ready static visualizations.">
+  <title>Assignment 06 | Static Visualization &amp; Redesign</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a>
+    <a class="back-link" href="index.html#project">Back to project architecture</a>
+  </header>
+  <main class="assignment-detail section-shell assignment-six">
+    <a class="back-link" href="index.html#project">← All assignments</a>
+    <section class="assignment-hero reveal visible">
+      <div class="assignment-kicker"><span>A06</span><span>12-assignment project guide</span></div>
+      <h1>Static visualization</h1>
+      <p class="assignment-summary">Turning analysis into effective visual communication.</p>
+    </section>
+
+    <section class="assignment-content">
+      <div>
+        <p class="eyebrow">Research question</p>
+        <h2>Make the evidence clear enough to stand on its own.</h2>
+      </div>
+      <div class="assignment-copy">
+        <p>These five figures redesign the most important findings from <a class="inline-link" href="assignment-05.html">Assignment 05</a> for the research paper: the popularity distribution, genre differences, pooled correlations, and the relationships between popularity and danceability or energy.</p>
+        <p>Each pair shows the exploratory figure first and its redesigned counterpart second. The redesigns use direct labels, consistent scales, clearer visual hierarchy, high-contrast colors that do not rely on color alone, and annotations that explain the evidence without implying causation.</p>
+        <div class="detail-rule"></div>
+        <p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p>
+      </div>
+    </section>
+
+    <section class="redesign-section" aria-labelledby="redesign-title">
+      <div class="redesign-heading">
+        <p class="eyebrow">Original → redesigned · five research figures</p>
+        <h2 id="redesign-title">From exploratory plots to paper-ready evidence.</h2>
+        <p>All redesigned charts are regenerated from the prepared 113,550-row Spotify file. Read the title, scale, sample notes, annotations, and alt text together; each chart reports descriptive patterns in this dataset, not causal effects or Spotify-wide estimates.</p>
+      </div>
+
+      <div class="redesign-list">
+        <article class="redesign-case">
+          <div class="redesign-case-heading">
+            <span class="redesign-index">01</span>
+            <div>
+              <p class="eyebrow">Finding 01 · Distribution</p>
+              <h3>A large zero-score group shapes the popularity distribution.</h3>
+              <p>Median popularity is 35. A total of 15,844 tracks (14.0%) score zero; only 5,468 (4.8%) score 70 or higher.</p>
+            </div>
+          </div>
+          <div class="redesign-pair">
+            <figure class="redesign-figure">
+              <div class="redesign-figure-label"><span>Original visualization</span><span>Assignment 05 · Figure 01</span></div>
+              <img src="assignment-05-figures/01-popularity.svg" alt="Original histogram of popularity scores from 0 to 100 for 113,550 tracks. The zero-to-five bin is much higher than all remaining bins, making the separate zero-score mass hard to distinguish from low nonzero scores." loading="lazy">
+              <figcaption>The original five-point histogram combines the zero score with nearby scores in its first bar and uses a count scale that visually dominates the remaining distribution.</figcaption>
+            </figure>
+            <figure class="redesign-figure redesign-figure-new">
+              <div class="redesign-figure-label"><span>Redesigned visualization</span><span>Paper figure 01</span></div>
+              <img src="assignment-06-figures/01-popularity-redesign.svg" alt="Redesigned popularity distribution: a bar chart separates popularity score zero from scores 1 to 9 and successive ten-point bands through 100. Bars show percent of all prepared tracks; zero is highlighted and labeled 14.0 percent, and a note reports the median score of 35." loading="lazy">
+              <figcaption><strong>Design choices:</strong> Separate zero from nonzero scores, combine the thin upper tail into readable bands, use percentages for a comparable scale, and annotate the zero share and median directly. One accent color plus labels keeps the emphasis accessible without depending on color alone.</figcaption>
+            </figure>
+          </div>
+          <p class="redesign-implication"><strong>Research connection:</strong> The zero pile-up and right tail mean the study should report medians and distribution shape alongside averages when describing popularity.</p>
+        </article>
+
+        <article class="redesign-case">
+          <div class="redesign-case-heading">
+            <span class="redesign-index">02</span>
+            <div>
+              <p class="eyebrow">Finding 02 · Group differences</p>
+              <h3>Mean popularity differs by 57.1 points across the selected genre extremes.</h3>
+              <p>Among the ten lowest- and ten highest-mean genres, Iranian averages 2.2 and pop-film averages 59.3. Genre groups contain 904–1,000 rows.</p>
+            </div>
+          </div>
+          <div class="redesign-pair">
+            <figure class="redesign-figure">
+              <div class="redesign-figure-label"><span>Original visualization</span><span>Assignment 05 · Figure 06</span></div>
+              <img src="assignment-05-figures/06-genre-means.svg" alt="Original bar chart comparing average popularity for the ten highest- and ten lowest-mean genres. The groups are separated and displayed in distinct sections." loading="lazy">
+              <figcaption>The original chart identifies extremes but places the highest and lowest groups in separate blocks, making their full ordering and shared scale harder to scan.</figcaption>
+            </figure>
+            <figure class="redesign-figure redesign-figure-new">
+              <div class="redesign-figure-label"><span>Redesigned visualization</span><span>Paper figure 02</span></div>
+              <img src="assignment-06-figures/02-genre-means-redesign.svg" alt="Redesigned horizontal lollipop chart showing the ten lowest- and ten highest-mean genres sorted on a single popularity scale from zero to 65. Each mean has a direct numeric label and sample size. Iranian is lowest at 2.2, pop-film highest at 59.3, with a 57.1-point range noted." loading="lazy">
+              <figcaption><strong>Design choices:</strong> Put all 20 selected genre means on one zero-based, shared scale and sort them from low to high. Direct values and sample sizes replace legend lookup; a divider preserves the distinction between the selected low and high extremes.</figcaption>
+            </figure>
+          </div>
+          <p class="redesign-implication"><strong>Research connection:</strong> Genre is a major comparison and possible confounder in audio-feature analyses. These source groups are nearly balanced by design and tracks can have multiple genre labels, so the difference is descriptive—not a measure of genre effects on Spotify listening.</p>
+        </article>
+
+        <article class="redesign-case">
+          <div class="redesign-case-heading">
+            <span class="redesign-index">03</span>
+            <div>
+              <p class="eyebrow">Finding 03 · Correlations</p>
+              <h3>The pooled linear correlations between popularity and these audio features are near zero.</h3>
+              <p>Across seven features, Pearson r ranges from −0.045 for speechiness to 0.034 for danceability.</p>
+            </div>
+          </div>
+          <div class="redesign-pair">
+            <figure class="redesign-figure">
+              <div class="redesign-figure-label"><span>Original visualization</span><span>Assignment 05 · Figure 09</span></div>
+              <img src="assignment-05-figures/09-correlation-heatmap.svg" alt="Original full correlation matrix heatmap for popularity and seven audio features. Its full matrix includes self-correlations and feature-to-feature correlations in addition to the relationships with popularity." loading="lazy">
+              <figcaption>The full heatmap includes many relationships unrelated to the research question and a strong self-correlation diagonal, competing with the small popularity associations.</figcaption>
+            </figure>
+            <figure class="redesign-figure redesign-figure-new">
+              <div class="redesign-figure-label"><span>Redesigned visualization</span><span>Paper figure 03</span></div>
+              <img src="assignment-06-figures/03-popularity-correlations-redesign.svg" alt="Redesigned diverging dot plot of seven Pearson correlations with popularity. A zero line centers the chart; the detail axis runs from minus 0.10 to plus 0.10 and is clearly marked as a zoomed portion of the full minus-one-to-plus-one correlation scale. Each feature's coefficient is printed." loading="lazy">
+              <figcaption><strong>Design choices:</strong> Filter to the seven coefficients that answer the research question, sort by value, center the scale at zero, and print every coefficient. The clearly declared detail scale keeps the small differences legible without suggesting that the correlations are large.</figcaption>
+            </figure>
+          </div>
+          <p class="redesign-implication"><strong>Research connection:</strong> No single measured audio feature has a meaningful pooled linear association with popularity here. This motivates multivariable and subgroup analysis; correlation does not establish causality or rule out nonlinear patterns.</p>
+        </article>
+
+        <article class="redesign-case">
+          <div class="redesign-case-heading">
+            <span class="redesign-index">04</span>
+            <div>
+              <p class="eyebrow">Finding 04 · Relationship</p>
+              <h3>Popularity rises modestly across middle danceability bands, then levels off.</h3>
+              <p>Binned mean popularity peaks at 34.7 for danceability 0.5–0.6 and is 31.4 for 0.9–1.0; pooled Pearson r is 0.034.</p>
+            </div>
+          </div>
+          <div class="redesign-pair">
+            <figure class="redesign-figure">
+              <div class="redesign-figure-label"><span>Original visualization</span><span>Assignment 05 · Figure 07</span></div>
+              <img src="assignment-05-figures/07-danceability-popularity.svg" alt="Original popularity-versus-danceability scatter plot with a large deterministic sample of individual tracks and a binned average trend line. Dense overlapping points obscure the local distribution." loading="lazy">
+              <figcaption>The original scatter plot shows individual records, but overplotting makes the density and differences between adjacent feature ranges difficult to read.</figcaption>
+            </figure>
+            <figure class="redesign-figure redesign-figure-new">
+              <div class="redesign-figure-label"><span>Redesigned visualization</span><span>Paper figure 04</span></div>
+              <img src="assignment-06-figures/04-danceability-trend-redesign.svg" alt="Redesigned two-panel danceability chart: the top panel shows the number of tracks in each equal-width 0.1 danceability band, and the lower panel shows mean popularity for the same bands on a consistent zero-to-100 scale. A labeled line peaks at 34.7 in the 0.5–0.6 band; counts are labeled above each bar." loading="lazy">
+              <figcaption><strong>Design choices:</strong> Replace the crowded point cloud with equal-width feature bands and show sample size in an aligned panel. Keep mean popularity on its full 0–100 scale, label the peak, and use the same popularity scale in the next figure for comparison.</figcaption>
+            </figure>
+          </div>
+          <p class="redesign-implication"><strong>Research connection:</strong> The shallow, non-monotonic pattern cautions against claiming that greater danceability predicts greater popularity. Examine genre-specific relationships before drawing broader conclusions.</p>
+        </article>
+
+        <article class="redesign-case">
+          <div class="redesign-case-heading">
+            <span class="redesign-index">05</span>
+            <div>
+              <p class="eyebrow">Finding 05 · Relationship</p>
+              <h3>Mean popularity is highest at moderate energy bands, not at the most energetic end.</h3>
+              <p>Mean popularity peaks at 36.1 for energy 0.4–0.5 and falls to 30.9 for 0.9–1.0; pooled Pearson r is −0.002.</p>
+            </div>
+          </div>
+          <div class="redesign-pair">
+            <figure class="redesign-figure">
+              <div class="redesign-figure-label"><span>Original visualization</span><span>Assignment 05 · Figure 08</span></div>
+              <img src="assignment-05-figures/08-energy-popularity.svg" alt="Original popularity-versus-energy scatter plot showing a large deterministic sample of individual tracks and a binned average trend line that peaks at moderate energy." loading="lazy">
+              <figcaption>As with the danceability plot, many overlapping individual points make it difficult to compare the binned trend and the number of observations supporting it.</figcaption>
+            </figure>
+            <figure class="redesign-figure redesign-figure-new">
+              <div class="redesign-figure-label"><span>Redesigned visualization</span><span>Paper figure 05</span></div>
+              <img src="assignment-06-figures/05-energy-trend-redesign.svg" alt="Redesigned two-panel energy chart: a top bar panel shows track counts for each equal-width 0.1 energy band; a lower line plot shows mean popularity by band on a zero-to-100 scale. The labeled peak is 36.1 for energy 0.4–0.5; counts appear above each bar." loading="lazy">
+              <figcaption><strong>Design choices:</strong> Reuse the same two-panel structure, bin widths, direct labels, and full popularity scale as the danceability figure. This consistent layout makes the different trend shapes comparable and makes changing sample sizes visible.</figcaption>
+            </figure>
+          </div>
+          <p class="redesign-implication"><strong>Research connection:</strong> The overall correlation is effectively zero even though the binned averages are non-monotonic. A linear coefficient alone misses this shape; the chart supports testing nonlinear and genre-specific patterns without claiming energy causes popularity.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="redesign-method" aria-labelledby="redesign-method-title">
+      <p class="eyebrow">Research paper · figure use</p>
+      <h2 id="redesign-method-title">A clear figure is not a causal result.</h2>
+      <p>These redesigned visuals are candidates for the paper's primary descriptive figures. They are computed from the prepared dataset, which has nearly equal numbers of rows per genre and includes tracks assigned to multiple genres. Spotify popularity is not explained by sound alone, and this dataset contains no release-year or geographic field—so time-series and geographic charts would imply evidence this project does not have. Describe associations only, retain the source and sample limitations, and pair each chart with a concise finding in the Results section.</p>
+      <p class="redesign-repro">Regenerate the five SVGs with <code>node assignment-06-redesign.js</code>. The script reads the prepared CSV from Assignment 03 and the measured summary from Assignment 05. <a class="inline-link" href="assignment-06-redesign.js">View the reproducible redesign script</a> · <a class="inline-link" href="assignment-03.html">View data preparation</a> · <a class="inline-link" href="assignment-05.html">View exploratory findings</a>.</p>
+    </section>
+
+    <nav class="assignment-pager"><a href="assignment-05.html">← Previous</a><a href="assignment-07.html">Next assignment →</a></nav>
+  </main>
+  <footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+</body>
+</html>
