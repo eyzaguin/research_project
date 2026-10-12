@@ -1,1 +1,136 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Assignment 03 | Applied Data Visualization</title><link rel="stylesheet" href="styles.css"></head><body><div class="topline"></div><header class="site-header"><a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a><a class="back-link" href="index.html#project">Back to project architecture</a></header><main class="assignment-detail section-shell"><a class="back-link" href="index.html#project">← All assignments</a><section class="assignment-hero reveal visible"><div class="assignment-kicker"><span>A03</span><span>12-assignment project guide</span></div><h1>Data preparation</h1><p class="assignment-summary">Clean, organize, and document the evidence.</p></section><section class="assignment-content"><div><p class="eyebrow">Assignment brief</p><h2>Make the dataset ready to trust.</h2></div><div class="assignment-copy"><p>Prepare the raw data for analysis by handling missing values, correcting formats, removing inconsistencies, and documenting each decision so the workflow remains reproducible.</p><div class="detail-rule"></div><p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p></div></section><nav class="assignment-pager"><a href="assignment-02.html">← Previous</a><a href="assignment-04.html">Next assignment →</a></nav></main><footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Data cleaning and reproducible preparation of the Spotify tracks dataset for analysis of song popularity.">
+  <title>Assignment 03 | Data Preparation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a>
+    <a class="back-link" href="index.html#project">Back to project architecture</a>
+  </header>
+  <main class="assignment-detail section-shell">
+    <a class="back-link" href="index.html#project">← All assignments</a>
+    <section class="assignment-hero reveal visible">
+      <div class="assignment-kicker"><span>A03</span><span>12-assignment project guide</span></div>
+      <h1>Data preparation</h1>
+      <p class="assignment-summary">A reproducible cleaning workflow for the Spotify popularity study.</p>
+    </section>
+
+    <section class="assignment-content">
+      <div>
+        <p class="eyebrow">Dataset &amp; purpose</p>
+        <h2>Prepare the tracks for analysis.</h2>
+      </div>
+      <div class="assignment-copy">
+        <p>This project asks which musical characteristics are associated with higher Spotify popularity. Preparation uses the same <a class="inline-link" href="https://www.kaggle.com/datasets/saichaitanyareddyai/spotify-tracks-dataset-audio-features" target="_blank" rel="noreferrer">Spotify Tracks Dataset | Audio Features</a> used in the proposal and exploratory analysis.</p>
+        <p>The original CSV has 114,000 records, 20 columns, and 114 genre labels. I audited the full source file, applied explicit type and format conversions, removed exact duplicate rows, preserved multi-genre track assignments, and flagged questionable records for review rather than silently deleting them.</p>
+        <div class="detail-rule"></div>
+        <p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p>
+      </div>
+    </section>
+
+    <section class="prep-audit" aria-labelledby="prep-audit-title">
+      <div class="prep-heading">
+        <p class="eyebrow">Preparation audit · original CSV</p>
+        <h2 id="prep-audit-title">Investigate before changing the data.</h2>
+        <p>These counts come from parsing the complete Kaggle CSV. Each decision is recorded so the cleaned dataset remains traceable and suitable for the research question.</p>
+      </div>
+
+      <ol class="prep-task-list">
+        <li class="prep-task">
+          <span class="prep-task-number">01</span>
+          <div>
+            <h3>Missing values</h3>
+            <p><strong>Audit:</strong> Three blank metadata cells were found: one each in <code>artists</code>, <code>album_name</code>, and <code>track_name</code>. No numeric research-feature values were blank.</p>
+            <p><strong>Action:</strong> Keep the descriptive cells blank and flag the affected row. Do not invent track names or artists. The row still has research fields and remains in the prepared file; exclude it only from an analysis that requires the missing label.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">02</span>
+          <div>
+            <h3>Duplicate records</h3>
+            <p><strong>Audit:</strong> 450 rows were exact full-row duplicates. While 24,259 rows repeat a <code>track_id</code>, 16,299 track IDs are assigned to multiple genre labels.</p>
+            <p><strong>Action:</strong> Remove only the 450 exact duplicate rows, leaving 113,550 records. Do not deduplicate by <code>track_id</code> alone: that would erase meaningful genre assignments. The prepared data preserves distinct track–genre records.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">03</span>
+          <div>
+            <h3>Incorrect data types</h3>
+            <p><strong>Audit:</strong> CSV fields need explicit types when imported; all 14 numeric columns parsed without errors, and every <code>explicit</code> value parsed as a boolean.</p>
+            <p><strong>Action:</strong> Read identifiers, names, and genre labels as text; cast numeric measures and category codes to numeric values; convert <code>explicit</code> to true/false. Keep IDs as text so they are never treated as measurements.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">04</span>
+          <div>
+            <h3>Inconsistent formats</h3>
+            <p><strong>Audit:</strong> Leading or trailing whitespace occurred in eight <code>artists</code> cells and one <code>track_name</code> cell. No genre spelling/case variants were found.</p>
+            <p><strong>Action:</strong> Trim surrounding whitespace from text fields and normalize genre labels to lowercase. Preserve internal punctuation, spelling, and genre distinctions such as <code>pop-film</code>.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">05</span>
+          <div>
+            <h3>Invalid values</h3>
+            <p><strong>Audit:</strong> Popularity scores fall within 0–100 and bounded audio features fall within their expected 0–1 ranges. One record has zero duration; 157 records report tempo as 0.</p>
+            <p><strong>Action:</strong> Retain valid popularity zeros; they are scores, not missing values. Flag zero duration and zero tempo as data-quality issues. Keep affected records for analyses of other valid fields, and exclude them only from the relevant duration- or tempo-specific calculation.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">06</span>
+          <div>
+            <h3>Outliers</h3>
+            <p><strong>Audit:</strong> After exact duplicates were removed, Tukey’s 1.5 × IQR rule flagged 6,540 records on at least one of popularity, danceability, energy, tempo, duration, or valence. Duration contributed the most flags; 79 tracks are over 20 minutes, and 16 are under 30 seconds.</p>
+            <p><strong>Action:</strong> Add field-specific outlier flags but do not automatically delete valid extremes. Verify implausible records against the source and use medians, distributions, and sensitivity checks when outliers could affect summaries.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">07</span>
+          <div>
+            <h3>Inconsistent categorical values</h3>
+            <p><strong>Audit:</strong> The source contains 114 distinct genre labels, with no whitespace or capitalization variants. <code>explicit</code> contains only valid true/false values.</p>
+            <p><strong>Action:</strong> Standardize text formatting without merging genres. Preserve all 114 category labels and the distinction between tracks that carry multiple genre assignments.</p>
+          </div>
+        </li>
+        <li class="prep-task">
+          <span class="prep-task-number">08</span>
+          <div>
+            <h3>Data transformations</h3>
+            <p><strong>Action:</strong> Retain <code>duration_ms</code> and add <code>duration_min</code> for readable summaries and charts. Add a <code>prep_flags</code> field for missing metadata, repeated track–genre records, zero tempo, zero duration, and IQR outliers. No popularity scores or valid feature measurements are rescaled or imputed.</p>
+            <p><strong>Result:</strong> The prepared file contains 113,550 rows and 22 columns. Genre sample sizes range from 904 to 1,000 after exact duplicates are removed.</p>
+          </div>
+        </li>
+        <li class="prep-task prep-research-task">
+          <span class="prep-task-number">09</span>
+          <div>
+            <h3>Research connection · Data Preparation / Methodology</h3>
+            <p><strong>Paper-ready method:</strong> “The Spotify tracks CSV was imported with explicit text, numeric, and boolean types. Text whitespace was trimmed and genre labels standardized. The preparation removed 450 exact duplicate rows while retaining distinct track–genre assignments. Three missing descriptive metadata cells were left blank and flagged rather than imputed. Popularity zeros and valid audio-feature values were retained. Zero-duration and zero-tempo records and Tukey IQR outliers were flagged for review rather than automatically removed. Track duration in minutes and a preparation-flags field were added while preserving the original duration in milliseconds. These decisions maintain the sample’s audio and popularity evidence while making exclusions transparent and reproducible.”</p>
+            <p>Use this methodology in the paper, and explain any later analysis-specific exclusions separately.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="prep-deliverables">
+      <p class="eyebrow">Prepared data &amp; reproducibility</p>
+      <h2>Download the prepared dataset.</h2>
+      <p>The reproducible Node.js script applies the documented decisions. The audit JSON records the source checks, duplicate counts, missing fields, type checks, IQR fences, and cleaning decisions.</p>
+      <div class="prep-links">
+        <a href="assignment-03-data/spotify-tracks-prepared.csv" download>Prepared Spotify tracks CSV <span>113,550 rows · 22 columns ↗</span></a>
+        <a href="assignment-03-data/preparation-audit.json">Preparation audit JSON <span>Counts and cleaning log ↗</span></a>
+        <a href="assignment-03-prepare.js">View preparation script <span>Reproducible workflow ↗</span></a>
+      </div>
+      <p class="prep-note">Re-run with Node.js: <code>node assignment-03-prepare.js path/to/spotify-tracks-dataset-detailed.csv assignment-03-data</code></p>
+    </section>
+
+    <nav class="assignment-pager"><a href="assignment-02.html">← Previous</a><a href="assignment-04.html">Next assignment →</a></nav>
+  </main>
+  <footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+</body>
+</html>

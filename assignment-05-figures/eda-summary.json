@@ -1,0 +1,456 @@
+{
+  "rowCount": 113550,
+  "columnCount": 22,
+  "genreCount": 114,
+  "uniqueTrackIds": 89741,
+  "trackIdsAssignedToMultipleGenres": 16299,
+  "exactDuplicateRows": 0,
+  "duplicatedIdGenreRows": 0,
+  "repeatedIdGenreKeys": 0,
+  "genreLabelsWithWhitespaceOrCaseVariants": 0,
+  "numericParseErrors": {
+    "popularity": 0,
+    "duration_ms": 0,
+    "danceability": 0,
+    "energy": 0,
+    "key": 0,
+    "loudness": 0,
+    "mode": 0,
+    "speechiness": 0,
+    "acousticness": 0,
+    "instrumentalness": 0,
+    "liveness": 0,
+    "valence": 0,
+    "tempo": 0,
+    "time_signature": 0
+  },
+  "explicitParseErrors": 0,
+  "whitespaceCounts": {
+    "track_id": 0,
+    "artists": 0,
+    "album_name": 0,
+    "track_name": 0,
+    "popularity": 0,
+    "duration_ms": 0,
+    "explicit": 0,
+    "danceability": 0,
+    "energy": 0,
+    "key": 0,
+    "loudness": 0,
+    "mode": 0,
+    "speechiness": 0,
+    "acousticness": 0,
+    "instrumentalness": 0,
+    "liveness": 0,
+    "valence": 0,
+    "tempo": 0,
+    "time_signature": 0,
+    "track_genre": 0,
+    "duration_min": 0,
+    "prep_flags": 0
+  },
+  "missingFields": [
+    {
+      "name": "artists",
+      "count": 1
+    },
+    {
+      "name": "album_name",
+      "count": 1
+    },
+    {
+      "name": "track_name",
+      "count": 1
+    }
+  ],
+  "duplicateTrackIds": 23809,
+  "invalidCoreRanges": 1,
+  "durationUnder30Seconds": 16,
+  "durationOver20Minutes": 79,
+  "tempoBelow30": 157,
+  "tempoZero": 157,
+  "tempoAbove300": 0,
+  "tempoOutside30to300": 157,
+  "featureSummary": {
+    "popularity": {
+      "mean": 33.32413914575077,
+      "median": 35,
+      "min": 0,
+      "max": 100
+    },
+    "danceability": {
+      "mean": 0.5670307151034665,
+      "median": 0.58,
+      "min": 0,
+      "max": 0.985
+    },
+    "energy": {
+      "mean": 0.6420903408824337,
+      "median": 0.685,
+      "min": 0,
+      "max": 1
+    },
+    "valence": {
+      "mean": 0.4742074930074928,
+      "median": 0.464,
+      "min": 0,
+      "max": 0.995
+    },
+    "tempo": {
+      "mean": 122.17588750330522,
+      "median": 122.02,
+      "min": 0,
+      "max": 243.372
+    },
+    "duration": {
+      "mean": 3.8013227033611856,
+      "median": 3.55,
+      "min": 0,
+      "max": 87.28825
+    },
+    "acousticness": {
+      "mean": 0.31406699364517515,
+      "median": 0.168,
+      "min": 0,
+      "max": 0.996
+    },
+    "speechiness": {
+      "mean": 0.0846741875825626,
+      "median": 0.0489,
+      "min": 0,
+      "max": 0.965
+    }
+  },
+  "popularity": {
+    "mean": 33.32413914575077,
+    "median": 35,
+    "q1": 17,
+    "q3": 50,
+    "zeroCount": 15844,
+    "countAtLeast70": 5468
+  },
+  "correlationsWithPopularity": {
+    "danceability": 0.034411580626612086,
+    "energy": -0.0024438720591086127,
+    "valence": -0.04110922456133382,
+    "tempo": 0.012179580977980593,
+    "duration": -0.007899350645166113,
+    "acousticness": -0.02237021935674845,
+    "speechiness": -0.04545930931665331
+  },
+  "tempoCorrelationExcludingZero": {
+    "count": 113393,
+    "pearsonR": 0.013317158543264134
+  },
+  "highestMeanGenres": [
+    {
+      "genre": "pop-film",
+      "count": 999,
+      "mean": 59.28028028028028,
+      "median": 60
+    },
+    {
+      "genre": "k-pop",
+      "count": 999,
+      "mean": 56.906906906906904,
+      "median": 60
+    },
+    {
+      "genre": "chill",
+      "count": 999,
+      "mean": 53.7047047047047,
+      "median": 57
+    },
+    {
+      "genre": "sad",
+      "count": 1000,
+      "mean": 52.379,
+      "median": 54
+    },
+    {
+      "genre": "grunge",
+      "count": 999,
+      "mean": 49.58258258258258,
+      "median": 55
+    },
+    {
+      "genre": "indian",
+      "count": 999,
+      "mean": 49.528528528528525,
+      "median": 49
+    },
+    {
+      "genre": "anime",
+      "count": 999,
+      "mean": 48.766766766766764,
+      "median": 50
+    },
+    {
+      "genre": "emo",
+      "count": 1000,
+      "mean": 48.128,
+      "median": 51
+    }
+  ],
+  "lowestMeanGenres": [
+    {
+      "genre": "iranian",
+      "count": 988,
+      "mean": 2.2246963562753037,
+      "median": 0
+    },
+    {
+      "genre": "romance",
+      "count": 904,
+      "mean": 3.549778761061947,
+      "median": 0
+    },
+    {
+      "genre": "latin",
+      "count": 990,
+      "mean": 8.363636363636363,
+      "median": 0
+    },
+    {
+      "genre": "detroit-techno",
+      "count": 998,
+      "mean": 11.183366733466935,
+      "median": 8
+    },
+    {
+      "genre": "chicago-house",
+      "count": 998,
+      "mean": 12.33366733466934,
+      "median": 10
+    },
+    {
+      "genre": "classical",
+      "count": 933,
+      "mean": 13.519828510182208,
+      "median": 3
+    },
+    {
+      "genre": "jazz",
+      "count": 999,
+      "mean": 13.586586586586586,
+      "median": 0
+    },
+    {
+      "genre": "grindcore",
+      "count": 998,
+      "mean": 14.629258517034069,
+      "median": 14
+    }
+  ],
+  "displayedGenreMedians": [
+    {
+      "genre": "pop",
+      "count": 993,
+      "q1": 2,
+      "median": 66,
+      "q3": 71
+    },
+    {
+      "genre": "rock",
+      "count": 1000,
+      "q1": 0,
+      "median": 0,
+      "q3": 10.25
+    },
+    {
+      "genre": "hip-hop",
+      "count": 991,
+      "q1": 0,
+      "median": 58,
+      "q3": 63
+    },
+    {
+      "genre": "edm",
+      "count": 993,
+      "q1": 0,
+      "median": 47,
+      "q3": 66
+    },
+    {
+      "genre": "latin",
+      "count": 990,
+      "q1": 0,
+      "median": 0,
+      "q3": 2
+    },
+    {
+      "genre": "country",
+      "count": 1000,
+      "q1": 0,
+      "median": 0,
+      "q3": 42
+    },
+    {
+      "genre": "classical",
+      "count": 933,
+      "q1": 0,
+      "median": 3,
+      "q3": 27
+    },
+    {
+      "genre": "jazz",
+      "count": 999,
+      "q1": 0,
+      "median": 0,
+      "q3": 37
+    },
+    {
+      "genre": "metal",
+      "count": 998,
+      "q1": 1,
+      "median": 57,
+      "q3": 68
+    }
+  ],
+  "popularityByTenPointBand": [
+    {
+      "band": "0–9",
+      "count": 22458
+    },
+    {
+      "band": "10–19",
+      "count": 9279
+    },
+    {
+      "band": "20–29",
+      "count": 18354
+    },
+    {
+      "band": "30–39",
+      "count": 14910
+    },
+    {
+      "band": "40–49",
+      "count": 19205
+    },
+    {
+      "band": "50–59",
+      "count": 14532
+    },
+    {
+      "band": "60–69",
+      "count": 9344
+    },
+    {
+      "band": "70–79",
+      "count": 4269
+    },
+    {
+      "band": "80–89",
+      "count": 1101
+    },
+    {
+      "band": "90–99",
+      "count": 96
+    }
+  ],
+  "popularityByDanceabilityDecile": [
+    {
+      "range": "0.0–0.1",
+      "count": 644,
+      "meanPopularity": 27.62111801242236
+    },
+    {
+      "range": "0.1–0.2",
+      "count": 2664,
+      "meanPopularity": 26.49774774774775
+    },
+    {
+      "range": "0.2–0.3",
+      "count": 5637,
+      "meanPopularity": 28.43551534504169
+    },
+    {
+      "range": "0.3–0.4",
+      "count": 10223,
+      "meanPopularity": 32.064951579771105
+    },
+    {
+      "range": "0.4–0.5",
+      "count": 17977,
+      "meanPopularity": 34.46531679368081
+    },
+    {
+      "range": "0.5–0.6",
+      "count": 24527,
+      "meanPopularity": 34.705793615199575
+    },
+    {
+      "range": "0.6–0.7",
+      "count": 24524,
+      "meanPopularity": 34.343581797422935
+    },
+    {
+      "range": "0.7–0.8",
+      "count": 18487,
+      "meanPopularity": 33.330827067669176
+    },
+    {
+      "range": "0.8–0.9",
+      "count": 7691,
+      "meanPopularity": 31.370302951501756
+    },
+    {
+      "range": "0.9–1.0",
+      "count": 1176,
+      "meanPopularity": 31.443027210884352
+    }
+  ],
+  "popularityByEnergyDecile": [
+    {
+      "range": "0.0–0.1",
+      "count": 3431,
+      "meanPopularity": 30.606820169046927
+    },
+    {
+      "range": "0.1–0.2",
+      "count": 4257,
+      "meanPopularity": 28.16466995536763
+    },
+    {
+      "range": "0.2–0.3",
+      "count": 5695,
+      "meanPopularity": 30.89482001755926
+    },
+    {
+      "range": "0.3–0.4",
+      "count": 7624,
+      "meanPopularity": 33.67510493179434
+    },
+    {
+      "range": "0.4–0.5",
+      "count": 10581,
+      "meanPopularity": 36.08354597864096
+    },
+    {
+      "range": "0.5–0.6",
+      "count": 12742,
+      "meanPopularity": 34.933526918851044
+    },
+    {
+      "range": "0.6–0.7",
+      "count": 14705,
+      "meanPopularity": 35.439782386943214
+    },
+    {
+      "range": "0.7–0.8",
+      "count": 16513,
+      "meanPopularity": 34.42590686126083
+    },
+    {
+      "range": "0.8–0.9",
+      "count": 18355,
+      "meanPopularity": 32.868864069735764
+    },
+    {
+      "range": "0.9–1.0",
+      "count": 19619,
+      "meanPopularity": 30.86609918956114
+    }
+  ]
+}

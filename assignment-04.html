@@ -1,1 +1,140 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Assignment 04 | Applied Data Visualization</title><link rel="stylesheet" href="styles.css"></head><body><div class="topline"></div><header class="site-header"><a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a><a class="back-link" href="index.html#project">Back to project architecture</a></header><main class="assignment-detail section-shell"><a class="back-link" href="index.html#project">← All assignments</a><section class="assignment-hero reveal visible"><div class="assignment-kicker"><span>A04</span><span>12-assignment project guide</span></div><h1>SQL analysis</h1><p class="assignment-summary">Use structured queries to reveal relationships.</p></section><section class="assignment-content"><div><p class="eyebrow">Assignment brief</p><h2>Ask the data direct questions.</h2></div><div class="assignment-copy"><p>Translate the research question into SQL queries. Filter, group, join, and summarize the prepared data to create a clear analytical foundation for the visual work ahead.</p><div class="detail-rule"></div><p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p></div></section><nav class="assignment-pager"><a href="assignment-03.html">← Previous</a><a href="assignment-05.html">Next assignment →</a></nav></main><footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 04 | SQL Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a>
+    <a class="back-link" href="index.html#project">Back to project architecture</a>
+  </header>
+  <main class="assignment-detail section-shell">
+    <a class="back-link" href="index.html#project">← All assignments</a>
+    <section class="assignment-hero reveal visible">
+      <div class="assignment-kicker"><span>A04</span><span>12-assignment project guide</span></div>
+      <h1>SQL analysis</h1>
+      <p class="assignment-summary">Explore which musical characteristics are associated with Spotify song popularity.</p>
+    </section>
+
+    <section class="assignment-content">
+      <div>
+        <p class="eyebrow">Assignment brief</p>
+        <h2>What makes a song popular?</h2>
+      </div>
+      <div class="assignment-copy">
+        <p>Use the Spotify Tracks Dataset | Audio Features to investigate your research question: <em>What musical characteristics are associated with higher song popularity on Spotify?</em> Query popularity alongside danceability, energy, tempo, duration, and genre. Treat your results as associations, not evidence that an audio feature causes popularity.</p>
+        <div class="detail-rule"></div>
+        <p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p>
+      </div>
+    </section>
+
+    <section class="sql-lab" aria-labelledby="sql-queries-title">
+      <div class="sql-section-heading">
+        <p class="eyebrow">Part 01 · Query the data</p>
+        <h2 id="sql-queries-title">Write at least eight queries.</h2>
+        <p>Use the cleaned Spotify tracks data from your earlier assignments. The examples use the dataset's field names; adjust table or column names only if your prepared file differs. Run each query and include its SQL and result in your submission.</p>
+      </div>
+      <div class="sql-schema">
+        <p class="sql-label">Project data · Spotify Tracks Dataset | Audio Features</p>
+        <p><code>tracks</code> (track_name, artists, track_genre, popularity, danceability, energy, tempo, duration_ms, ...)</p>
+        <p><code>genres</code> (track_genre) · a distinct genre lookup made from the tracks' <code>track_genre</code> values for the JOIN query</p>
+      </div>
+      <ol class="sql-query-list">
+        <li>
+          <h3>Basic selection</h3>
+          <p>Inspect track popularity alongside the audio features in your research question.</p>
+          <pre><code>SELECT track_name, artists, track_genre,
+       popularity, danceability, energy, tempo, duration_ms
+FROM tracks;</code></pre>
+        </li>
+        <li>
+          <h3>Filtering</h3>
+          <p>Filter to tracks with a higher popularity score and relevant feature data.</p>
+          <pre><code>SELECT track_name, popularity, danceability
+FROM tracks
+WHERE popularity &gt;= 70;</code></pre>
+        </li>
+        <li>
+          <h3>Multiple conditions</h3>
+          <p>Find tracks with both higher danceability and higher energy, then compare their popularity.</p>
+          <pre><code>SELECT track_name, popularity, danceability, energy
+FROM tracks
+WHERE danceability &gt;= 0.7 AND energy &gt;= 0.7;</code></pre>
+        </li>
+        <li>
+          <h3>Sorting</h3>
+          <p>List the most popular tracks first.</p>
+          <pre><code>SELECT track_name, artists, track_genre, popularity
+FROM tracks
+ORDER BY popularity DESC
+LIMIT 20;</code></pre>
+        </li>
+        <li>
+          <h3>Aggregation</h3>
+          <p>Summarize the dataset's size and overall popularity and audio-feature averages.</p>
+          <pre><code>SELECT COUNT(*) AS track_count,
+       AVG(popularity) AS avg_popularity,
+       AVG(danceability) AS avg_danceability,
+       AVG(energy) AS avg_energy
+FROM tracks;</code></pre>
+        </li>
+        <li>
+          <h3>Group comparison</h3>
+          <p>Compare average popularity and track counts across genres.</p>
+          <pre><code>SELECT track_genre, COUNT(*) AS track_count,
+       AVG(popularity) AS avg_popularity
+FROM tracks
+GROUP BY track_genre
+ORDER BY avg_popularity DESC;</code></pre>
+        </li>
+        <li>
+          <h3>Filtering groups</h3>
+          <p>Compare genres only when they have enough tracks for a more meaningful average.</p>
+          <pre><code>SELECT track_genre, COUNT(*) AS track_count,
+       AVG(popularity) AS avg_popularity
+FROM tracks
+GROUP BY track_genre
+HAVING COUNT(*) &gt;= 100
+ORDER BY avg_popularity DESC;</code></pre>
+        </li>
+        <li>
+          <h3>Joining tables</h3>
+          <p>Join each track to the genre lookup table and compare popularity by genre.</p>
+          <pre><code>SELECT genres.track_genre, COUNT(*) AS track_count,
+       AVG(tracks.popularity) AS avg_popularity
+FROM tracks
+JOIN genres ON tracks.track_genre = genres.track_genre
+GROUP BY genres.track_genre
+ORDER BY avg_popularity DESC;</code></pre>
+        </li>
+      </ol>
+      <p class="sql-note">Before comparing genre averages, check how many tracks each genre contains and whether the dataset is balanced. Popularity can also reflect artist recognition, marketing, playlist placement, and other factors not represented by audio features.</p>
+    </section>
+
+    <section class="sql-outcomes">
+      <article>
+        <p class="eyebrow">Part 02 · SQL to visualization</p>
+        <h2>Visualize two query results.</h2>
+        <p>Use the basic selection result to plot popularity against danceability as a scatterplot, looking for an association while noting overlap and outliers. Use the genre <code>GROUP BY</code> result to compare average popularity across genres with a sorted bar chart. Label both charts, identify the query behind each, and discuss patterns without implying causation.</p>
+      </article>
+      <article>
+        <p class="eyebrow">Part 03 · Research connection</p>
+        <h2>Connect queries to your question.</h2>
+        <p>Explain how the queries test the project's sub-questions about danceability, energy, and genre differences in popularity. Summarize what the visualizations suggest, whether the results support your preliminary hypotheses, and how genre imbalance or missing factors such as marketing and artist recognition limit your conclusions.</p>
+      </article>
+    </section>
+
+    <section class="sql-submission">
+      <p class="eyebrow">Submit</p>
+      <p>Submit your prepared Spotify data in a SQL-compatible structure, the eight queries and their results, two visualizations generated from query outputs, and a short research interpretation that addresses association, sample balance, and limitations.</p>
+    </section>
+
+    <nav class="assignment-pager"><a href="assignment-03.html">← Previous</a><a href="assignment-05.html">Next assignment →</a></nav>
+  </main>
+  <footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+</body>
+</html>

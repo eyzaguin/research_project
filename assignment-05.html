@@ -1,1 +1,197 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Assignment 05 | Applied Data Visualization</title><link rel="stylesheet" href="styles.css"></head><body><div class="topline"></div><header class="site-header"><a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a><a class="back-link" href="index.html#project">Back to project architecture</a></header><main class="assignment-detail section-shell"><a class="back-link" href="index.html#project">← All assignments</a><section class="assignment-hero reveal visible"><div class="assignment-kicker"><span>A05</span><span>12-assignment project guide</span></div><h1>Exploratory analysis</h1><p class="assignment-summary">Look closely for patterns, gaps, and surprises.</p></section><section class="assignment-content"><div><p class="eyebrow">Assignment brief</p><h2>Let the patterns change the question.</h2></div><div class="assignment-copy"><p>Explore distributions, relationships, and outliers without rushing to a conclusion. Use descriptive analysis to discover what deserves a closer look in the next stages.</p><div class="detail-rule"></div><p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p></div></section><nav class="assignment-pager"><a href="assignment-04.html">← Previous</a><a href="assignment-06.html">Next assignment →</a></nav></main><footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exploratory analysis of Spotify track popularity, audio features, genre differences, and dataset quality.">
+  <title>Assignment 05 | Exploratory Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html#top"><span class="brand-mark">NE</span><span class="brand-name">Nicole<br>Eyzaguirre</span></a>
+    <a class="back-link" href="index.html#project">Back to project architecture</a>
+  </header>
+  <main class="assignment-detail section-shell">
+    <a class="back-link" href="index.html#project">← All assignments</a>
+    <section class="assignment-hero reveal visible">
+      <div class="assignment-kicker"><span>A05</span><span>12-assignment project guide</span></div>
+      <h1>Exploratory analysis</h1>
+      <p class="assignment-summary">What musical characteristics are associated with higher Spotify popularity?</p>
+    </section>
+
+    <section class="assignment-content">
+      <div>
+        <p class="eyebrow">Dataset &amp; method</p>
+        <h2>Explore the prepared tracks.</h2>
+      </div>
+      <div class="assignment-copy">
+        <p>This analysis uses the <a class="inline-link" href="https://www.kaggle.com/datasets/saichaitanyareddyai/spotify-tracks-dataset-audio-features" target="_blank" rel="noreferrer">Spotify Tracks Dataset | Audio Features</a> selected in Assignment 01. Following the preparation documented in Assignment 03, the dataset contains 113,550 rows, 22 fields, and 114 genre labels. Figures and summaries below use this prepared file.</p>
+        <p>The analysis describes patterns in this dataset. Correlation and genre differences do not show that audio features cause popularity, and Spotify popularity is affected by factors not measured here.</p>
+        <div class="detail-rule"></div>
+        <p class="detail-label">Course · TECH*3745*01<br>Professor · Xiwang Guo</p>
+      </div>
+    </section>
+
+    <section class="eda-results" aria-labelledby="eda-results-title">
+      <div class="eda-results-heading">
+        <p class="eyebrow">Part 01 · Ten exploratory visualizations</p>
+        <h2 id="eda-results-title">What the data shows.</h2>
+        <p>Each figure is followed by an observation, an interpretation, and its implication for the research question.</p>
+      </div>
+
+      <div class="eda-grid">
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/01-popularity.svg" alt="Histogram of popularity scores across all 113,550 prepared tracks, concentrated toward low and middle values, with a large spike at zero." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 01</span><h3>Popularity distribution</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>The median is 35 and the mean is 33.32. There are 15,844 tracks (14.0%) with a score of zero; 5,468 (4.8%) score 70 or higher.</dd></div>
+              <div><dt>Interpretation</dt><dd>Popularity is concentrated at low-to-middle scores, with a substantial zero-score group and a thin high-score tail.</dd></div>
+              <div><dt>Research implication</dt><dd>Popularity is not normally distributed. Interpret averages alongside medians and the zero-score pile-up.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/02-danceability.svg" alt="Histogram showing the distribution of danceability scores from 0 to 1 across 113,550 prepared Spotify tracks." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 02</span><h3>Danceability distribution</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Danceability averages 0.567, with a median of 0.58 and a range from 0 to 0.985. Most tracks fall in the middle of the scale.</dd></div>
+              <div><dt>Interpretation</dt><dd>The dataset includes variation across the feature, but very low and very high scores are less common.</dd></div>
+              <div><dt>Research implication</dt><dd>The feature can be compared with popularity, but the relationship should not be assumed to be linear or causal.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/03-energy-valence.svg" alt="Overlaid histograms comparing the energy and valence distributions of Spotify tracks." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 03</span><h3>Energy and valence</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Energy has a mean of 0.641 and median of 0.685; valence has a mean of 0.474 and median of 0.464. Both span almost the full 0–1 scale.</dd></div>
+              <div><dt>Interpretation</dt><dd>Energy is more concentrated toward higher values; valence is closer to the scale midpoint.</dd></div>
+              <div><dt>Research implication</dt><dd>Audio characteristics vary across the sample, but their popularity associations need to be measured rather than inferred from these distributions.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/04-tempo-duration.svg" alt="Tempo and duration histograms, including counts of tracks outside the main displayed range." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 04</span><h3>Tempo and duration</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Tempo's median is 122 BPM, but 157 rows record tempo as 0. Duration's median is 3.55 minutes and its range reaches 87.29 minutes; 16 tracks are under 30 seconds and 79 exceed 20 minutes.</dd></div>
+              <div><dt>Interpretation</dt><dd>Most tracks fall in typical song-length and tempo ranges, but zero-tempo records and extreme durations are potential data anomalies.</dd></div>
+              <div><dt>Research implication</dt><dd>Inspect these records before modeling; excluding zero-tempo rows barely changes its popularity correlation (r = 0.013 vs. 0.012 with zeros retained).</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/05-genre-boxplots.svg" alt="Box plots comparing popularity distributions in ten music genres, with group sizes from 933 to 1,000 records." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 05</span><h3>Popularity distributions by genre</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Group sizes range from 933 to 1,000. Medians differ: pop 66, hip-hop 58, metal 57, EDM 47, and classical 3. Several groups have many zero scores.</dd></div>
+              <div><dt>Interpretation</dt><dd>Popularity distributions differ substantially by genre, with broad within-genre spreads and low-score outliers.</dd></div>
+              <div><dt>Research implication</dt><dd>Genre is an important comparison and possible confounder when examining audio features against popularity.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/06-genre-means.svg" alt="Bar chart of mean popularity for the ten lowest- and ten highest-scoring genres; every genre has 1,000 tracks." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 06</span><h3>Mean popularity across genres</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Pop-film has the highest mean (59.3; n=999) and Iranian the lowest (2.2; n=988), a 57.1-point difference. Prepared genre sizes range from 904 to 1,000.</dd></div>
+              <div><dt>Interpretation</dt><dd>Genre averages vary widely. Group sizes are close but no longer identical after removal of exact duplicate rows.</dd></div>
+              <div><dt>Research implication</dt><dd>Genre differences are prominent in this sample, but the Kaggle source's original equal-per-genre sampling still does not represent Spotify listening or catalog prevalence.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/07-danceability-popularity.svg" alt="Scatter plot of popularity against danceability, with a binned average trend line that rises modestly then levels and declines." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 07</span><h3>Popularity and danceability</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>The Pearson correlation is 0.034. Binned mean popularity rises from 26.5 at danceability 0.1–0.2 to about 34.7 at 0.5–0.6, then declines to 31.4 at 0.9–1.0.</dd></div>
+              <div><dt>Interpretation</dt><dd>The overall linear association is negligible; the binned pattern is shallow and non-monotonic.</dd></div>
+              <div><dt>Research implication</dt><dd>The results do not support a simple claim that more-danceable tracks are more popular. Examine genre-specific patterns before drawing conclusions.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/08-energy-popularity.svg" alt="Scatter plot of popularity against energy, with a binned average trend line that peaks at moderate energy." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 08</span><h3>Popularity and energy</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>The Pearson correlation is −0.002. Binned mean popularity peaks around 36.1 for energy 0.4–0.5 and falls to 30.9 for energy 0.9–1.0.</dd></div>
+              <div><dt>Interpretation</dt><dd>There is effectively no linear association across the full sample, although the binned averages suggest a modest non-linear pattern.</dd></div>
+              <div><dt>Research implication</dt><dd>The simple positive-energy hypothesis is not supported by the overall correlation; test non-linear and genre-specific effects in later analysis.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/09-correlation-heatmap.svg" alt="Pearson correlation heatmap for popularity and seven audio characteristics." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 09</span><h3>Correlations among audio features</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>Popularity's correlations are all very small: speechiness −0.045, valence −0.041, danceability 0.034, acousticness −0.022, tempo 0.012, energy −0.002, and duration −0.008. Removing the 157 zero-tempo records changes tempo's correlation only to 0.013.</dd></div>
+              <div><dt>Interpretation</dt><dd>No single listed feature has a meaningful linear relationship with popularity in the full prepared dataset.</dd></div>
+              <div><dt>Research implication</dt><dd>Popularity likely depends on more than these audio features. The heatmap motivates multivariable and subgroup analysis, while correlation alone cannot reveal causality or all non-linear patterns.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+
+        <figure class="eda-figure">
+          <div class="eda-figure-image"><img src="assignment-05-figures/10-missing-anomalies.svg" alt="Data-quality audit showing three missing text cells and flags for duplicate track IDs and extreme durations." loading="lazy"></div>
+          <figcaption>
+            <span class="eda-number">Figure 10</span><h3>Missingness and potential anomalies</h3>
+            <dl class="eda-reading">
+              <div><dt>Observation</dt><dd>There are three blank text cells (one each in artists, album_name, and track_name), 23,809 rows with a repeated track ID, 157 zero-tempo records, and one zero-duration record. Preparation removed 450 exact duplicate rows; 16,299 IDs still span multiple genre labels.</dd></div>
+              <div><dt>Interpretation</dt><dd>The remaining repeated IDs reflect tracks with multiple genre assignments, not exact duplicate rows. The blank metadata, zero tempo values, and extreme durations still warrant review.</dd></div>
+              <div><dt>Research implication</dt><dd>Preserve track–genre assignments and avoid deduplicating on track_id; interpret zero-tempo and unusual-duration records carefully in relevant analyses.</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="eda-findings">
+      <div>
+        <p class="eyebrow">Part 02 · Findings for the paper</p>
+        <h2>Five results to carry forward.</h2>
+        <p>These are descriptive findings from this dataset and can seed the Results section. They should not be presented as causal explanations.</p>
+      </div>
+      <ol class="eda-finding-list">
+        <li><strong>Popularity is concentrated at low and middle scores.</strong> The median is 35; 14.0% of prepared tracks have a zero score, and 4.8% score 70 or higher.</li>
+        <li><strong>Genre averages differ sharply.</strong> Mean popularity ranges from 2.2 for Iranian to 59.3 for pop-film; prepared group sizes range from 904 to 1,000 rows.</li>
+        <li><strong>Pooled linear relationships with popularity are negligible.</strong> Danceability's Pearson r is 0.034 and energy's is −0.002; other examined feature correlations are also close to zero.</li>
+        <li><strong>Feature trends may be non-linear.</strong> Binned averages peak at moderate danceability and energy, so a single correlation coefficient does not capture the full pattern.</li>
+        <li><strong>Data structure and quality need careful handling.</strong> After removing exact duplicate rows, the prepared file has a few blank text cells, 157 zero-tempo rows, and repeated IDs for tracks assigned to multiple genres; cleaning decisions could change results.</li>
+      </ol>
+    </section>
+
+    <section class="eda-limitations">
+      <p class="eyebrow">Interpretation &amp; limits</p>
+      <h2>Popularity is not a measure of sound alone.</h2>
+      <p>The source sampling allocated 1,000 rows per genre, but removing exact duplicate rows produces prepared genre counts from 904 to 1,000; tracks may also have multiple genre labels. These details affect interpretation of overall and genre-level statistics. Popularity may reflect artist recognition, playlist placement, marketing, release timing, and exposure. This file has no release-year column, so a temporal trend cannot be tested here. Audio-feature associations should be described as associations, not causes.</p>
+    </section>
+
+    <section class="exploration-submission">
+      <p class="eyebrow">Dataset &amp; reproducibility</p>
+      <p>Charts were regenerated from the 113,550-row, 22-column prepared CSV linked in Assignment 03 using the <a class="inline-link" href="assignment-05-eda.js">Node.js analysis script</a>. The <a class="inline-link" href="assignment-05-figures/eda-summary.json">computed summary</a> records the statistics behind these findings. The dataset page reports no missing values, but this file scan found three blank metadata cells. The popularity scatter plots show a deterministic sample of points for readability; their orange trend lines use all 113,550 prepared tracks.</p>
+    </section>
+
+    <nav class="assignment-pager"><a href="assignment-04.html">← Previous</a><a href="assignment-06.html">Next assignment →</a></nav>
+  </main>
+  <footer class="site-footer section-shell"><span>TECH*3745*01</span><span>Applied Data Visualization</span><a href="index.html#top">Back to home ↑</a></footer>
+</body>
+</html>

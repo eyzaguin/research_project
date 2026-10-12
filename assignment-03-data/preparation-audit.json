@@ -1,0 +1,78 @@
+{
+  "sourceFile": "spotify-tracks-dataset-detailed.csv",
+  "originalRows": 114000,
+  "preparedRows": 113550,
+  "originalColumns": 20,
+  "preparedColumns": 22,
+  "genreCount": 114,
+  "uniqueTrackIds": 89741,
+  "trackIdsWithMultipleGenres": 16299,
+  "preparedGenreRowCountRange": {
+    "minimum": 904,
+    "maximum": 1000
+  },
+  "exactDuplicateRowsBeforePreparation": 450,
+  "exactDuplicateRowsRemoved": 450,
+  "missingValuesByField": {
+    "artists": 1,
+    "album_name": 1,
+    "track_name": 1
+  },
+  "numericParseErrorsByField": {},
+  "explicitParseErrors": 0,
+  "textWhitespaceTrimmedByField": {
+    "artists": 8,
+    "track_name": 1
+  },
+  "inconsistentGenreLabels": [],
+  "qualityCounts": {
+    "exactDuplicateRowsRemoved": 450,
+    "repeatedTrackGenreRowsRetained": 0,
+    "missingMetadataRowsRetained": 1,
+    "zeroTempoRowsFlagged": 157,
+    "zeroDurationRowsFlagged": 1,
+    "outlierRowsFlagged": 6540
+  },
+  "iqrOutlierSummary": {
+    "popularity": {
+      "lowFence": -32.5,
+      "highFence": 99.5,
+      "flaggedCount": 2
+    },
+    "danceability": {
+      "lowFence": 0.09750000000000009,
+      "highFence": 1.0534999999999999,
+      "flaggedCount": 615
+    },
+    "energy": {
+      "lowFence": -0.09850000000000003,
+      "highFence": 1.4255,
+      "flaggedCount": 0
+    },
+    "tempo": {
+      "lowFence": 38.130624999999995,
+      "highFence": 201.23962500000005,
+      "flaggedCount": 615
+    },
+    "duration_ms": {
+      "lowFence": 43069,
+      "highFence": 392699,
+      "flaggedCount": 5593
+    },
+    "valence": {
+      "lowFence": -0.37450000000000006,
+      "highFence": 1.3175000000000001,
+      "flaggedCount": 0
+    }
+  },
+  "decisions": [
+    "Remove exact duplicate rows after trimming text and normalizing genre labels.",
+    "Do not deduplicate on track_id alone; preserve tracks assigned to multiple genres.",
+    "Keep missing track, album, and artist metadata blank and flag the row rather than inventing values.",
+    "Convert explicit to boolean and numeric measure columns to numeric values; preserve track identifiers and descriptive labels as text.",
+    "Normalize genre labels with trim and lowercase; leave labels unchanged when already consistent.",
+    "Add duration_min while retaining the original duration_ms field.",
+    "Flag zero tempo, zero duration, and Tukey IQR outliers for review; retain flagged observations in the prepared file.",
+    "Keep popularity score 0 because it is within the documented 0–100 range."
+  ]
+}
